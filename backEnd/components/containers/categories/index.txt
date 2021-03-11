@@ -1,0 +1,33 @@
+// import Image from 'next/image';
+
+import { useQuery } from '@apollo/client';
+
+import { Container, Typography, Box, List, ListItem, ListItemAvatar, ListItemText, Avatar } from '@material-ui/core';
+import { GET_CATEGORIES } from 'graphql/schemas/category';
+
+const Categories = () => {
+    const { data } = useQuery(GET_CATEGORIES);
+
+    return (
+        <Container maxWidth="sm">
+            <Box my={4}>
+                <Typography variant="h4" component="h1" gutterBottom>Categories</Typography>
+                {data ?
+                    <List>
+                        {
+                            data.categories && data.categories.map(({ id, name, img }: any) => <ListItem key={id}>
+                                <ListItemAvatar>
+                                    <Avatar src={`/img/${img}`} alt={name} />
+                                </ListItemAvatar>
+                                <ListItemText primary={name} />
+                            </ListItem>)
+                        }
+                    </List> :
+                    <Typography variant="h1" component="h2">Sin Productos para mostrar</Typography>
+                }
+            </Box>
+        </Container>
+    )
+};
+
+export default Categories;

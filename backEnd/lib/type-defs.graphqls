@@ -1,0 +1,11 @@
+type Query {
+  viewer: User!
+  category(id: ID!, available: Boolean = true): Category
+  categories(available: Boolean = true): [Category]
+}
+
+type Mutation {
+  updateName(name: String!): User!
+  addCategory(info: inputCategory!): Boolean!
+  updateCategory(id: ID!, info: inputCategory!): Boolean!
+}
