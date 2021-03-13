@@ -5,7 +5,7 @@ import Chart from '../components/containers/demo/chart';
 import Deposits from '../components/containers/demo/deposits';
 import Orders from '../components/containers/demo/orders';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: any) => ({
   root: {
     display: 'flex',
   },

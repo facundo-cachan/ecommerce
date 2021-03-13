@@ -1,5 +1,5 @@
+/*
 import { useQuery } from '@apollo/client';
-
 import { GET_CATEGORIES } from 'graphql/schemas/category';
 
 const Categories: React.FC<any> = () => {
@@ -8,3 +8,4 @@ const Categories: React.FC<any> = () => {
 }
 
 export default Categories;
+*/

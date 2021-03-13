@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 import clsx from 'clsx';
 import { makeStyles, List, ListItem, ListItemAvatar, Avatar, ListItemText, CircularProgress } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
-import Container from '@material-ui/core/Container';
+// import Container from '@material-ui/core/Container';
 import { Icon } from '@material-ui/core';
 import Copyright from '../Copyrigth';
 
@@ -23,6 +23,10 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+    },
+    noColor: {
+        color: 'inherit',
+        backgroundColor: '#556cd6',
     },
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
@@ -100,13 +104,19 @@ const useStyles = makeStyles((theme) => ({
     list: {
         width: '100%',
         maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.background.paper
     },
+    labelItem: {
+        paddingLeft: '2em'
+    }
 }));
 
-const categories = [
-    { id: 0, name: "Panes", slug: "pan", img: "pan.jpg" },
-    { id: 1, name: "Damajuanas", slug: "damajuana", img: "damajuana.jpg" }
+const menuItems = [
+    {
+        name: 'Categorias',
+        icon: 'fas fa-shopping-basket',
+        href: '/categories'
+    }
 ]
 
 function Layout({ children }: any): JSX.Element {
@@ -151,29 +161,26 @@ function Layout({ children }: any): JSX.Element {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
+                    <Link href="/" passHref>
+                        <ListItem button component="a">
+                            <Avatar alt="Logo" src="/img/logo.jpg" />
+                            <ListItemText primary="Inicio" className={classes.labelItem} />
+                        </ListItem>
+                    </Link>
                     <IconButton onClick={handleDrawerClose}>
                         <Icon>chevron_left</Icon>
                     </IconButton>
                 </div>
                 <Divider />
                 <List className={classes.list}>
-                    <ListItemAvatar>
-                        <Link href="/" passHref>
-                            <ListItem button component="a">
-                                <Avatar alt="Logo" src="/img/logo.jpg" />
-                                <ListItemText primary="Inicio" secondary="Dashboard" />
-                            </ListItem>
-                        </Link>
-                    </ListItemAvatar>
-                    <Divider />
                     {
-                        categories ? categories.map(({ id, name, img, slug }: any) => <ListItemAvatar key={id}>
-                            <Link href={`/category/${slug}`} passHref>
+                        menuItems ? menuItems.map(({ name, icon, href }: any, k: number) => <ListItemAvatar key={k}>
+                            <Link href={href} passHref>
                                 <ListItem button component="a">
-                                    <Avatar>
-                                        <img src={`img/${img}`} alt={name} />
+                                    <Avatar className={classes.noColor}>
+                                        <Icon className={icon} style={{ fontSize: 20 }} />
                                     </Avatar>
-                                    <ListItemText primary={name} secondary={categories.length} />
+                                    <ListItemText primary={name} className={classes.labelItem} />
                                 </ListItem>
                             </Link>
                         </ListItemAvatar>) : <CircularProgress color="secondary" />
@@ -182,12 +189,10 @@ function Layout({ children }: any): JSX.Element {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    {children}
-                    <Box pt={4}>
-                        <Copyright />
-                    </Box>
-                </Container>
+                {children}
+                <Box pt={4}>
+                    <Copyright />
+                </Box>
             </main>
         </div>
     );

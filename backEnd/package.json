@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf .next && rm -rf build && rm -rf __generated__",
     "codegen": "graphql-let",
-    "dev": "yarn codegen && next",
+    "dev": "yarn clean && yarn codegen && next",
     "build": "yarn codegen && next build",
     "test": "yarn codegen && jest",
     "start": "next start"
