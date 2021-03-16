@@ -3,6 +3,8 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 import { ListItemAvatar, Paper, Grid, Avatar, Typography, CircularProgress } from '@material-ui/core';
 
+import items from '../mocks/categories';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -18,13 +20,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Products = ({products}: any) => {
+const Categories = ({categories}: any) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       {
-        !products ? <CircularProgress color="secondary" /> : products.map(({ id, name, img, slug }: any) => <ListItemAvatar key={id}>
-          <Link href={`/products/${slug}`} passHref>
+        !categories ? <CircularProgress color="secondary" /> : categories.map(({ id, name, img, slug }: any) => <ListItemAvatar key={id}>
+          <Link href={`/category/${slug}`} passHref>
             <Paper className={classes.paper}>
               <Grid container wrap="nowrap" spacing={2}>
                 <Grid item>
@@ -42,13 +44,10 @@ const Products = ({products}: any) => {
   );
 }
 
-Products.getInitialProps = async () => {
+Categories.getInitialProps = async () => {
   return {
-    products: [
-      { id: 0, name: "Panes", slug: "pan", img: "pan.jpg" },
-      { id: 1, name: "Damajuanas", slug: "damajuana", img: "damajuana.jpg" }
-    ]
+    categories: items
   }
 }
 
-export default Products
+export default Categories

@@ -1,0 +1,34 @@
+enum Published {
+  Normal
+  New
+  Offer
+}
+
+input inputProduct {
+  id: ID
+  name: String
+  price: Int
+  title: String
+  details: String
+  img: String
+  categories: [Int]
+  available: Boolean = false
+  published: Published = Normal
+}
+
+type Product {
+  id: ID!
+  name: String!
+  slug: String!
+  price: Int!
+  title: String
+  details: String!
+  img: String!
+  unit: String!
+  dish: String!
+  categories: [Category!]
+  available: Boolean!
+  published: Published
+  createdAt: String!
+  updatedAt: String!
+}

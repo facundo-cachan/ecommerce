@@ -7,6 +7,9 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import { Icon, CircularProgress } from '@material-ui/core';
 
+import categories from '../../mocks/categories';
+import products from '../../mocks/products';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -26,20 +29,24 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Category = ({ category }: any) => {
-  const classes = useStyles();
-  const router = useRouter()
-  const { id } = router.query
-  console.log({ id })
+const Category = ({ userAgent }: any) => {
+  const classes = useStyles(),
+    router = useRouter(),
+    { slug } = router.query;
+
   return (
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">Categorias</ListSubheader>
+          <ListSubheader component="div">Categoria {slug}</ListSubheader>
+          <ListSubheader>Your user agent: {userAgent}</ListSubheader>
         </GridListTile>
         {
-          !category ? <CircularProgress color="secondary" /> : category.map(({ id, name, slug, img }: any) => (
-            <Link href={`/products/${slug}`} passHref>
+            /*
+            categories.find(async (category: any) => await category.slug === slug)
+            
+          !products ? <CircularProgress color="secondary" /> : products.map(({ id, name, slug, img }: any) => (
+            <Link href={`/products/${slug}`} passHref key={id}>
               <GridListTile>
                 <img src={`/img/${img}`} alt={name} />
                 <GridListTileBar
@@ -50,19 +57,17 @@ const Category = ({ category }: any) => {
               </GridListTile>
             </Link>
           ))
+        */
         }
       </GridList>
     </div>
   );
 }
 
-Category.getInitialProps = async () => {
-  return {
-    category: [
-      { id: 0, name: "De Campo", slug: "de-campo", img: "pan.jpg" },
-      { id: 1, name: "Clasico", slug: "clasico", img: "damajuana.jpg" }
-    ]
-  }
+Category.getInitialProps = async ({ req }: any) => {
+  console.log(req);
+  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
+  return { userAgent }
 }
 
 export default Category

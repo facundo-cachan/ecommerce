@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Orders() {
     const classes = useStyles();
     return (
-        <React.Fragment>
+        <>
             <Title>Recent Orders</Title>
             <Table size="small">
                 <TableHead>
@@ -62,6 +62,6 @@ export default function Orders() {
                     See more orders
         </Link>
             </div>
-        </React.Fragment>
+        </>
     );
 }

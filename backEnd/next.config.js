@@ -1,4 +1,13 @@
 module.exports = {
+  async redirects() {
+    return [
+      {
+        source: '/product',
+        destination: '/products',
+        permanent: true,
+      },
+    ]
+  },
   webpack(config, options) {
     config.module.rules.push({
       test: /\.graphql$/,
@@ -17,7 +26,6 @@ module.exports = {
       type: 'json',
       use: 'yaml-loader',
     })
-
     return config
   },
 }
