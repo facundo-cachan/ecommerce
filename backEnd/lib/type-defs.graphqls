@@ -1,0 +1,19 @@
+type Query {
+  viewer: User!
+  category(id: ID!, available: Boolean = true): Category
+  categories(available: Boolean = true): [Category]
+  products(available: Boolean = true): [Product]
+  product(
+    id: ID
+    published: Published = Normal
+    available: Boolean = true
+  ): [Product]
+}
+
+type Mutation {
+  updateName(name: String!): User!
+  addCategory(info: inputCategory!): Boolean!
+  updateCategory(id: ID!, info: inputCategory!): Boolean!
+  addProduct(info: inputProduct!): Boolean!
+  updateProduct(id: ID!, info: inputProduct!): Boolean!
+}
