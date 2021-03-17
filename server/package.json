@@ -1,0 +1,34 @@
+{
+  "name": "server",
+  "version": "09.03.21",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clear": "clear && rm -rf node_modules/.cache/*",
+    "start": "ts-node-dev --respawn index.ts"
+  },
+  "dependencies": {
+    "apollo-server": "^2.21.1",
+    "dataloader": "^2.0.0",
+    "dateformat": "^4.5.1",
+    "graphql": "^15.5.0",
+    "graphql-tools": "^7.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "babel-plugin-import-graphql": "^2.8.1",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-preset-minify": "^0.5.1",
+    "babel-register": "^6.26.0",
+    "chalk": "^4.1.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "graphql-tag": "^2.11.0",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.3"
+  }
+}
