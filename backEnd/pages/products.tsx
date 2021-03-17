@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
-import { CircularProgress, GridList, GridListTile, ListSubheader, GridListTileBar, Icon, IconButton } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 
 import Review from '../components/Cards/review';
 
@@ -35,7 +35,7 @@ const Products = ({ products }: any) => {
         !products ?
           <CircularProgress color="secondary" />
           :
-          products?.map((product: Product) => <Link href={`/product/${product.slug}`} passHref key={product.id}>
+          products?.map((product: Product, i: any) => <Link href={`/product/${product.slug}`} passHref key={i}>
             <Review {...product} />
           </Link>)
       }

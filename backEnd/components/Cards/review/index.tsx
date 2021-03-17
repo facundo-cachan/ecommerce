@@ -62,10 +62,10 @@ const Review = ({ id, name, slug, price, title, details, img, unit, published, u
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <Icon>heart</Icon>
+        <IconButton aria-label="add to shopping cart" onClick={() => console.log('add_shopping_cart', name)}>
+          <Icon>add_shopping_cart</Icon>
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton aria-label="share" onClick={() => console.log('share', name)}>
           <Icon>share</Icon>
         </IconButton>
         <IconButton
@@ -90,4 +90,5 @@ const Review = ({ id, name, slug, price, title, details, img, unit, published, u
     </Card>
   );
 }
+
 export default Review

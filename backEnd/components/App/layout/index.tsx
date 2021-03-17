@@ -166,16 +166,17 @@ function Layout({ children }: any): JSX.Element {
                 <Divider />
                 <List className={classes.list}>
                     {
-                        menuItems ? menuItems.map(({ name, icon, href }: any, k: number) => <ListItemAvatar key={k}>
-                            <Link href={href} passHref>
-                                <ListItem button component="a">
-                                    <Avatar className={classes.noColor}>
-                                        <Icon className={icon} style={{ fontSize: 20 }} />
-                                    </Avatar>
-                                    <ListItemText primary={name} className={classes.labelItem} />
-                                </ListItem>
-                            </Link>
-                        </ListItemAvatar>) : <CircularProgress color="secondary" />
+                        menuItems ? menuItems.map(({ name, icon, href }: any, k: number) =>
+                            <Link href={href} passHref key={k}>
+                                <ListItemAvatar>
+                                    <ListItem button component="a">
+                                        <Avatar className={classes.noColor}>
+                                            <Icon className={icon} style={{ fontSize: 20 }} />
+                                        </Avatar>
+                                        <ListItemText primary={name} className={classes.labelItem} />
+                                    </ListItem>
+                                </ListItemAvatar>
+                            </Link>) : <CircularProgress color="secondary" />
                     }
                 </List>
             </Drawer>

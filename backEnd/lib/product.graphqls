@@ -5,7 +5,6 @@ enum Published {
 }
 
 input inputProduct {
-  id: ID
   name: String
   price: Int
   title: String

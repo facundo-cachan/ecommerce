@@ -1,0 +1,1 @@
+export default (arr: Array<any>, value: string | number) => arr.filter((el: any) => el.id != value)
