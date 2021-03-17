@@ -1,14 +1,11 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head';
 import { useEffect } from 'react';
-
-
+import { ThemeProvider } from '@material-ui/core/styles';
+import { Auth, Cart } from '../context';
 import { ApolloProvider } from '@apollo/client'
 import { useApollo } from '../lib/apollo'
-
-import { ThemeProvider } from '@material-ui/core/styles';
 import { App } from '../components';
-
 import theme from '../lib/theme';
 
 
@@ -31,9 +28,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <ApolloProvider client={apolloClient}>
-          <App.Layout>
-            <Component {...pageProps} />
-          </App.Layout>
+          <Auth.AuthProvider>
+            <Cart.CartShopProvider>
+              <App.Layout>
+                <Component {...pageProps} />
+              </App.Layout>
+            </Cart.CartShopProvider>
+          </Auth.AuthProvider>
         </ApolloProvider>
       </ThemeProvider>
     </>

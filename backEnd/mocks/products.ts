@@ -8,17 +8,12 @@ export default [
       details: "details",
       img: "pan.jpg",
       unit: "1kg",
-      categories: [
-        {
-          id: 1001,
-          name: "De Campo"
-        }
-      ],
+      dish: "",
+      categories: [1001],
       available: true,
       published: "Normal",
       createdAt: "2020/09/21",
       updatedAt: "2020/09/21",
-      dish: ""
     },
     {
       id: 2,
@@ -29,16 +24,11 @@ export default [
       details: "4,5Lts",
       img: "damajuana.jpg",
       unit: "1 botella",
-      categories: [
-        {
-          id: 2001,
-          name: "Damajuana 4,5lt"
-        }
-      ],
+      dish: "",
+      categories: [2001],
       available: true,
       published: "New",
       createdAt: "2020/09/21",
       updatedAt: "2020/09/21",
-      dish: ""
     }
   ]

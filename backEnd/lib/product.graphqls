@@ -10,7 +10,7 @@ input inputProduct {
   title: String
   details: String
   img: String
-  categories: [Int]
+  categories: [Int!]
   available: Boolean = false
   published: Published = Normal
 }
@@ -25,7 +25,7 @@ type Product {
   img: String!
   unit: String!
   dish: String!
-  categories: [Category!]
+  categories: [Int!]
   available: Boolean!
   published: Published
   createdAt: String!
